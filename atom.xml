@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://mzq1210.github.io/</id>
     <title>笔记本</title>
-    <updated>2019-07-30T06:25:44.356Z</updated>
+    <updated>2019-07-30T06:29:42.344Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://mzq1210.github.io/"/>
     <link rel="self" href="https://mzq1210.github.io//atom.xml"/>
@@ -10,24 +10,4 @@
     <logo>https://mzq1210.github.io//images/avatar.png</logo>
     <icon>https://mzq1210.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 笔记本</rights>
-    <entry>
-        <title type="html"><![CDATA[测试]]></title>
-        <id>https://mzq1210.github.io//post/ce-shi</id>
-        <link href="https://mzq1210.github.io//post/ce-shi">
-        </link>
-        <updated>2019-07-30T04:13:05.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://mzq1210.github.io//post/hello-gridea</id>
-        <link href="https://mzq1210.github.io//post/hello-gridea">
-        </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></content>
-    </entry>
 </feed>
