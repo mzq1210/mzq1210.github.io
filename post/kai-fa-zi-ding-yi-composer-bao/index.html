@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>开发自定义composer包 | 笔记本</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://mzq1210.github.io//favicon.ico?v=1564468314954">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://mzq1210.github.io//styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://mzq1210.github.io/">
+        <img src="https://mzq1210.github.io//images/avatar.png?v=1564468314954" class="site-logo">
+        <h1 class="site-title">笔记本</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="" target="_blank">呵呵</a> | <a class="rss" href="https://mzq1210.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">开发自定义composer包</h2>
+            <div class="post-date">2019-07-30</div>
+            
+            <div class="post-content">
+              <h2 id="1创建目录名称">1.创建目录名称</h2>
+<pre><code>mkdir try-make-package
+cd try-make-package
+</code></pre>
+<h2 id="2composer初始化">2.composer初始化</h2>
+<pre><code>☁  composer init
+
+  Welcome to the Composer config generator
+
+This command will guide you through creating your composer.json config.
+
+Package name (&lt;vendor&gt;/&lt;name&gt;) [lingan/try-make-package]:
+Description []: try make a package
+Author [saboran &lt;saboran@163.com&gt;, n to skip]:
+Minimum Stability []: dev
+Package Type (e.g. library, project, metapackage, composer-plugin) []: library
+License []: MIT
+
+Define your dependencies.
+
+Would you like to define your dependencies (require) interactively [yes]? n
+Would you like to define your dev dependencies (require-dev) interactively [yes]? n
+
+{
+    &quot;name&quot;: &quot;lingan/try-make-package&quot;,
+    &quot;description&quot;: &quot;try make a package&quot;,
+    &quot;type&quot;: &quot;library&quot;,
+    &quot;license&quot;: &quot;MIT&quot;,
+    &quot;authors&quot;: [
+        {
+            &quot;name&quot;: &quot;saboran&quot;,
+            &quot;email&quot;: &quot;saboran@163.com&quot;
+        }
+    ],
+    &quot;minimum-stability&quot;: &quot;dev&quot;,
+    &quot;require&quot;: {}
+}
+
+Do you confirm generation [yes]? yes
+</code></pre>
+<h2 id="3编辑json文件">3.编辑.json文件</h2>
+<pre><code>{
+  &quot;name&quot;: &quot;lingan/try-make-package&quot;,
+  &quot;description&quot;: &quot;try make a package&quot;,
+  &quot;type&quot;: &quot;library&quot;,
+  &quot;license&quot;: &quot;MIT&quot;,
+  &quot;authors&quot;: [
+    {
+      &quot;name&quot;: &quot;saboran&quot;,
+      &quot;email&quot;: &quot;saboran@163.com&quot;
+    }
+  ],
+  &quot;minimum-stability&quot;: &quot;dev&quot;,
+  &quot;require&quot;: {
+    &quot;php&quot;: &quot;&gt;=7.0&quot;
+  },
+  &quot;autoload&quot;: {
+    &quot;psr-4&quot;: {
+      &quot;Flower\\Rose\\&quot;: &quot;src/Flower/Rose&quot;,
+      &quot;Flower\\Lily\\&quot;: &quot;src/Flower/Lily&quot;
+    }
+  }
+}
+
+</code></pre>
+<h2 id="4创建如下目录结构">4.创建如下目录结构</h2>
+<p><img src="https://note.youdao.com/yws/api/personal/file/1E1CA3EBE85C44A2A351C16A5465BF49?method=download&amp;shareKey=55a263166fa2ed1c934c3b79e4435ab2" alt="image"></p>
+<h2 id="5对应文件内容另一个类似">5.对应文件内容，另一个类似</h2>
+<pre><code>&lt;?php
+namespace Flower\Rose;
+
+class Rose
+{
+    public function desc()
+    {
+        echo &quot;this is rose flower&quot;;
+    }
+}
+</code></pre>
+<h2 id="6登录github选择-new-repository">6.登录github,选择 “ New repository”</h2>
+<p><img src="https://upload-images.jianshu.io/upload_images/6626109-4343e8b973618521.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/870/format/webp" alt="image"></p>
+<h2 id="7提交本地文件到github仓库">7.提交本地文件到GitHub仓库</h2>
+<pre><code>git init
+git add .
+git commit -am &quot;init &amp;&amp; dev package&quot;
+git remote add origin https://github.com/mzq1210/try-make-package.git
+git push -u origin master
+</code></pre>
+<h2 id="8增加gitignore为git忽略一些文件增加readmemd为项目增加描述">8.增加.gitignore为git忽略一些文件,增加readme.md为项目增加描述</h2>
+<pre><code>.idea
+vendor/
+composer.lock
+</code></pre>
+<blockquote>
+<p>到这一步只是完成了源文件编写及添加进GitHub仓库，接下来发布</p>
+</blockquote>
+<h2 id="9登录自己的packagist-submit自己注册注册之后添加git项目地址">9.登录自己的<a href="https://packagist.org/packages/submit">packagist submit</a>(自己注册)，注册之后添加git项目地址</h2>
+<p><img src="https://upload-images.jianshu.io/upload_images/6626109-b5bfd95e236598cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/782/format/webp" alt="image"></p>
+<blockquote>
+<p>这时候新建测试目录，就可以使用composer require wat/try-make-package安装，但因为项目没有tag版本需要加tag</p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/6626109-e93b1590e77f76eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/694/format/webp" alt="image"></p>
+<pre><code>git tag -a v1.0.0 -m '我是第一个版本'
+git push origin v1.0.0
+</code></pre>
+<h2 id="10点击release发布一个版本">10.点击release，发布一个版本</h2>
+<p><img src="https://upload-images.jianshu.io/upload_images/6626109-46882c159d33ce6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="image"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6626109-d441ad1399cb13f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="image"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6626109-3bfe09bfcdf53666.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="image"></p>
+<blockquote>
+<p>对勾一定要打上，打上以后就是发布版本了。<br>
+如果有新版本就再次点击release，发新版，然后本地</p>
+</blockquote>
+<pre><code>composer update
+</code></pre>
+<h1 id="参考">参考</h1>
+<p><a href="https://segmentfault.com/a/1190000011882785">https://segmentfault.com/a/1190000011882785</a></p>
+<p><a href="https://www.jianshu.com/p/280acb6b0b22">https://www.jianshu.com/p/280acb6b0b22</a></p>
+
+            </div>
+            
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
