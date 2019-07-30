@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://mzq1210.github.io/</id>
     <title>笔记本</title>
-    <updated>2019-07-30T07:26:24.135Z</updated>
+    <updated>2019-07-30T07:27:41.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://mzq1210.github.io/"/>
     <link rel="self" href="https://mzq1210.github.io//atom.xml"/>
@@ -16,6 +16,32 @@
         <link href="https://mzq1210.github.io//post/solr-an-zhuang">
         </link>
         <updated>2019-07-30T07:12:17.000Z</updated>
+        <summary type="html"><![CDATA[<p><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html?ssSourceSiteId=otncn">安装JavaSE-jdk</a></p>
+<blockquote>
+<p>下载这个文件包：jdk-11.0.2_linux-x64_bin.tar.gz</p>
+</blockquote>
+<p><a href="mirrors.shu.edu.cn/apache/lucene/solr/">solr下载</a></p>
+<blockquote>
+<p>7.x即可</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/zhdl11/article/details/82791568">安装步骤</a></p>
+<blockquote>
+<p>安装好以后报错不能以root方式运行，所以如果以root运行，就执行如下命令</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<p><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html?ssSourceSiteId=otncn">安装JavaSE-jdk</a></p>
+<blockquote>
+<p>下载这个文件包：jdk-11.0.2_linux-x64_bin.tar.gz</p>
+</blockquote>
+<p><a href="mirrors.shu.edu.cn/apache/lucene/solr/">solr下载</a></p>
+<blockquote>
+<p>7.x即可</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/zhdl11/article/details/82791568">安装步骤</a></p>
+<blockquote>
+<p>安装好以后报错不能以root方式运行，所以如果以root运行，就执行如下命令</p>
+</blockquote>
+]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[开发自定义composer包]]></title>
