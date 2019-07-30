@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>solr安装 | 笔记本</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://mzq1210.github.io//favicon.ico?v=1564470924994">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://mzq1210.github.io//styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://mzq1210.github.io/">
+        <img src="https://mzq1210.github.io//images/avatar.png?v=1564470924994" class="site-logo">
+        <h1 class="site-title">笔记本</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+        
+          <a href="/archives/solr" class="site-nav">
+            solr
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="" target="_blank">呵呵</a> | <a class="rss" href="https://mzq1210.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">solr安装</h2>
+            <div class="post-date">2019-07-30</div>
+            
+            <div class="post-content">
+              <p><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html?ssSourceSiteId=otncn">安装JavaSE-jdk</a></p>
+<blockquote>
+<p>下载这个文件包：jdk-11.0.2_linux-x64_bin.tar.gz</p>
+</blockquote>
+<p><a href="mirrors.shu.edu.cn/apache/lucene/solr/">solr下载</a></p>
+<blockquote>
+<p>7.x即可</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/zhdl11/article/details/82791568">安装步骤</a></p>
+<blockquote>
+<p>安装好以后报错不能以root方式运行，所以如果以root运行，就执行如下命令</p>
+</blockquote>
+<pre><code>&gt;solr start -force
+</code></pre>
+<h2 id="创建第一个项目article">创建第一个项目article</h2>
+<ul>
+<li>进入solr安装目录</li>
+</ul>
+<pre><code>&gt;cd /root/solr-7.7.1/server/solr
+</code></pre>
+<ul>
+<li>创建目article文件夹</li>
+</ul>
+<pre><code>&gt;mkdir article
+</code></pre>
+<ul>
+<li>拷贝基本配置</li>
+</ul>
+<pre><code>&gt;cp -r configsets/_default/conf article/conf
+</code></pre>
+<ul>
+<li>点击创建<br>
+<img src="https://note.youdao.com/yws/api/personal/file/3B5B0FFE2A87453E99C288D5F8F99877?method=download&amp;shareKey=f806b1d49eaa615197d7ba55eb3b18fb" alt="image"></li>
+</ul>
+<h3 id="增加ik分词检索看连接即可">增加ik分词检索看连接即可</h3>
+<pre><code>&lt;!-- ik分词器 --&gt;
+    &lt;fieldType name=&quot;text_ik&quot; class=&quot;solr.TextField&quot;&gt;
+        &lt;analyzer type=&quot;index&quot;&gt;
+          &lt;tokenizer class=&quot;org.wltea.analyzer.lucene.IKTokenizerFactory&quot; useSmart=&quot;false&quot; conf=&quot;ik.conf&quot;/&gt;
+          &lt;filter class=&quot;solr.LowerCaseFilterFactory&quot;/&gt;
+        &lt;/analyzer&gt;
+        &lt;analyzer type=&quot;query&quot;&gt;
+            &lt;tokenizer class=&quot;org.wltea.analyzer.lucene.IKTokenizerFactory&quot; useSmart=&quot;true&quot; conf=&quot;ik.conf&quot;/&gt;
+            &lt;filter class=&quot;solr.LowerCaseFilterFactory&quot;/&gt;
+        &lt;/analyzer&gt;
+    &lt;/fieldType&gt;
+
+
+    &lt;field name=&quot;id&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;true&quot; required=&quot;true&quot; multiValued=&quot;false&quot; /&gt;
+    &lt;!-- docValues are enabled by default for long type so we don't need to index the version field  --&gt;
+    &lt;field name=&quot;_version_&quot; type=&quot;plong&quot; indexed=&quot;false&quot; stored=&quot;false&quot;/&gt;
+
+    &lt;field name=&quot;p_title&quot; type=&quot;text_ik&quot; indexed=&quot;true&quot; stored=&quot;true&quot;/&gt;
+    &lt;field name=&quot;p_author&quot; type=&quot;text_ik&quot; indexed=&quot;true&quot; stored=&quot;true&quot;/&gt;
+
+    &lt;!--普通搜索--&gt;
+    &lt;field name=&quot;search&quot; type=&quot;text_ik&quot; indexed=&quot;true&quot; stored=&quot;true&quot; multiValued=&quot;true&quot; /&gt;
+    &lt;copyField source=&quot;p_title&quot; dest=&quot;search&quot; /&gt;
+    &lt;copyField source=&quot;p_author&quot; dest=&quot;search&quot; /&gt;
+
+</code></pre>
+<blockquote>
+<p>增加IK搜索的时候，数据（dataimport）需要重新导入，这样才能重建索引，方便ik生效</p>
+</blockquote>
+<h3 id="增加拼音检索看简书链接配置文件有个地方需要注意">增加拼音检索，看简书链接，配置文件有个地方需要注意：</h3>
+<pre><code>&lt;fieldType name=&quot;text_pinyin&quot; class=&quot;solr.TextField&quot; positionIncrementGap=&quot;0&quot;&gt;
+    &lt;analyzer type=&quot;index&quot;&gt;
+        &lt;tokenizer class=&quot;org.apache.lucene.analysis.ik.IKTokenizerFactory&quot;/&gt;
+        &lt;filter class=&quot;com.shentong.search.analyzers.PinyinTransformTokenFilterFactory&quot; minTermLenght=&quot;2&quot; /&gt;
+        &lt;filter class=&quot;com.shentong.search.analyzers.PinyinNGramTokenFilterFactory&quot; minGram=&quot;1&quot; maxGram=&quot;20&quot; /&gt;
+    &lt;/analyzer&gt;
+    &lt;analyzer type=&quot;query&quot;&gt;
+        &lt;tokenizer class=&quot;org.apache.lucene.analysis.ik.IKTokenizerFactory&quot;/&gt;
+        &lt;filter class=&quot;com.shentong.search.analyzers.PinyinTransformTokenFilterFactory&quot; minTermLenght=&quot;2&quot; /&gt;
+        &lt;filter class=&quot;com.shentong.search.analyzers.PinyinNGramTokenFilterFactory&quot; minGram=&quot;1&quot; maxGram=&quot;20&quot; /&gt;
+    &lt;/analyzer&gt;
+&lt;/fieldType&gt;
+</code></pre>
+<blockquote>
+<p>这里tokenizer标签内容要和ik分词的tokenizer的标签内容一致，不然会报错</p>
+</blockquote>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://mzq1210.github.io//post/kai-fa-zi-ding-yi-composer-bao">
+                  <h3 class="post-title">
+                    开发自定义composer包
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
