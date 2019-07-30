@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>C:/Users/wat/Documents/Gridea/output</id>
+    <id>https://mzq1210.github.io/</id>
     <title>Gridea</title>
-    <updated>2019-07-30T03:54:49.584Z</updated>
+    <updated>2019-07-30T04:17:41.516Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="C:/Users/wat/Documents/Gridea/output"/>
-    <link rel="self" href="C:/Users/wat/Documents/Gridea/output/atom.xml"/>
+    <link rel="alternate" href="https://mzq1210.github.io/"/>
+    <link rel="self" href="https://mzq1210.github.io//atom.xml"/>
     <subtitle>温故而知新</subtitle>
-    <logo>C:/Users/wat/Documents/Gridea/output/images/avatar.png</logo>
-    <icon>C:/Users/wat/Documents/Gridea/output/favicon.ico</icon>
+    <logo>https://mzq1210.github.io//images/avatar.png</logo>
+    <icon>https://mzq1210.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, Gridea</rights>
     <entry>
+        <title type="html"><![CDATA[测试]]></title>
+        <id>https://mzq1210.github.io//post/ce-shi</id>
+        <link href="https://mzq1210.github.io//post/ce-shi">
+        </link>
+        <updated>2019-07-30T04:13:05.000Z</updated>
+        <content type="html"><![CDATA[<p>测试1</p>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>C:/Users/wat/Documents/Gridea/output/post/hello-gridea/index.html</id>
-        <link href="C:/Users/wat/Documents/Gridea/output/post/hello-gridea/index.html">
+        <id>https://mzq1210.github.io//post/hello-gridea</id>
+        <link href="https://mzq1210.github.io//post/hello-gridea">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
