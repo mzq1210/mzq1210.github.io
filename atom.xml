@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://mzq1210.github.io/</id>
     <title>笔记本</title>
-    <updated>2019-08-02T07:27:14.705Z</updated>
+    <updated>2019-08-21T07:12:01.686Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://mzq1210.github.io/"/>
     <link rel="self" href="https://mzq1210.github.io//atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://mzq1210.github.io//images/avatar.png</logo>
     <icon>https://mzq1210.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 笔记本</rights>
+    <entry>
+        <title type="html"><![CDATA[PyCharm安装使用教程]]></title>
+        <id>https://mzq1210.github.io//post/pycharm-an-zhuang-shi-yong-jiao-cheng</id>
+        <link href="https://mzq1210.github.io//post/pycharm-an-zhuang-shi-yong-jiao-cheng">
+        </link>
+        <updated>2019-08-21T07:11:08.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[YII2中，增加自己的小组件]]></title>
         <id>https://mzq1210.github.io//post/yii2-zhong-zeng-jia-zi-ji-de-xiao-zu-jian</id>
