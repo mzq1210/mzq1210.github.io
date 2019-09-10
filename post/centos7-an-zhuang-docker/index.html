@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>solr | 笔记本</title>
+<title>CentOS7安装docker | 笔记本</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -91,40 +91,66 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          <h2 class="current-tag">标签: solr</h2>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://mzq1210.github.io//post/solr-an-zhuang">
-                  <h2 class="post-title">solr安装</h2>
+          <div class="post-detail">
+            <h2 class="post-title">CentOS7安装docker</h2>
+            <div class="post-date">2019-08-23</div>
+            
+            <div class="post-content">
+              <h2 id="安装docker需要的依赖包">安装docker需要的依赖包</h2>
+<pre><code>yum install -y yum-utils  device-mapper-persistent-data lvm2
+</code></pre>
+<h2 id="配置yum源文件">配置yum源文件</h2>
+<pre><code>yum-config-manager --add-repo  http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+</code></pre>
+<h2 id="查看所有稳定版本的docker列表">查看所有稳定版本的docker列表</h2>
+<pre><code>yum list docker-ce --showduplicates | sort -r
+</code></pre>
+<h2 id="安装stable版本的docker">安装stable版本的docker</h2>
+<blockquote>
+<p>注：版本可以根据自己的需要进行修改</p>
+</blockquote>
+<pre><code>yum install docker-ce-18.03.1.ce
+</code></pre>
+<h3 id="卸载旧版本的docker">卸载旧版本的docker</h3>
+<pre><code>yum remove docker docker-client docker-client-latest docker-common   docker-latest docker-latest-logrotate docker-logrotate docker-selinux  docker-engine-selinux docker-engine
+</code></pre>
+<h2 id="测试helloworld">测试HelloWorld</h2>
+<pre><code>docker run hello-world
+</code></pre>
+<blockquote>
+<p>如果报错：docker: Cannot connect to the Docker，则</p>
+</blockquote>
+<pre><code>systemctl daemon-reload
+service docker restart
+service docker status
+docker run hello-world
+</code></pre>
+<h2 id="设置国内镜像源">设置国内镜像源</h2>
+<blockquote>
+<p>创建或修改 /etc/docker/daemon.json 文件，修改为如下形式</p>
+</blockquote>
+<pre><code>{
+    &quot;registry-mirrors&quot;: [&quot;http://hub-mirror.c.163.com&quot;]
+}
+</code></pre>
+<p>然后重启。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://mzq1210.github.io//post/pycharm-an-zhuang-shi-yong-jiao-cheng">
+                  <h3 class="post-title">
+                    PyCharm安装使用教程
+                  </h3>
                 </a>
-                <div class="post-date">
-                  2019-07-30
-                </div>
-                <div class="post-abstract">
-                  <p><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html?ssSourceSiteId=otncn">安装JavaSE-jdk</a></p>
-<blockquote>
-<p>下载这个文件包：jdk-11.0.2_linux-x64_bin.tar.gz</p>
-</blockquote>
-<p><a href="mirrors.shu.edu.cn/apache/lucene/solr/">solr下载</a></p>
-<blockquote>
-<p>7.x即可</p>
-</blockquote>
-<p><a href="https://blog.csdn.net/zhdl11/article/details/82791568">安装步骤</a></p>
-<blockquote>
-<p>安装好以后报错不能以root方式运行，所以如果以root运行，就执行如下命令</p>
-</blockquote>
-
-                </div>
               </div>
-              
-            </article>
-          
+            
 
-          <div class="pagination-container">
-  
-  
-</div>
+            
+
+          </div>
 
         </div>
       </div>
