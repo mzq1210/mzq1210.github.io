@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>YII2中，增加自己的小组件 | 笔记本</title>
+<title>Nginx学习 | 笔记本</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -92,17 +92,16 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">YII2中，增加自己的小组件</h2>
-            <div class="post-date">2019-08-02</div>
+            <h2 class="post-title">Nginx学习</h2>
+            <div class="post-date">2019-09-10</div>
             
             <div class="post-content">
-              <p>创建文件：项目\components\Stone.php</p>
-<pre><code>'stone' =&gt; [
-    'class' =&gt; 'app\components\Stone'
-]
-</code></pre>
-<p>然后就可以用了</p>
-<pre><code>Yii::$app-&gt;stone
+              <h3 id="权重分配方式">权重分配方式</h3>
+<h1 id="轮询默认">轮询（默认）</h1>
+<pre><code>upstream backend { 
+server 192.168.0.14 weight=10; 
+server 192.168.0.15 weight=10; 
+} 
 </code></pre>
 
             </div>
@@ -110,9 +109,9 @@
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://mzq1210.github.io//post/solr-an-zhuang">
+                <a href="https://mzq1210.github.io//post/centos7-an-zhuang-docker">
                   <h3 class="post-title">
-                    solr安装
+                    CentOS7安装docker
                   </h3>
                 </a>
               </div>

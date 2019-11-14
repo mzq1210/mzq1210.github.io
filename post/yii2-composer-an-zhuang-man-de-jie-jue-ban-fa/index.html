@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>YII2中，增加自己的小组件 | 笔记本</title>
+<title>Yii2 composer安装慢的解决办法 | 笔记本</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -92,17 +92,44 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">YII2中，增加自己的小组件</h2>
-            <div class="post-date">2019-08-02</div>
+            <h2 class="post-title">Yii2 composer安装慢的解决办法</h2>
+            <div class="post-date">2019-11-14</div>
             
             <div class="post-content">
-              <p>创建文件：项目\components\Stone.php</p>
-<pre><code>'stone' =&gt; [
-    'class' =&gt; 'app\components\Stone'
+              <h4 id="安装方式就是-asset-packagist">安装方式就是 <a href="https://asset-packagist.org">Asset Packagist</a></h4>
+<blockquote>
+<p>在config中关闭fxp-asset的调用<br>
+在源列表中加入asset-packagist库的配置<br>
+如果composer的源采用阿里云镜像，完整写法如下：</p>
+</blockquote>
+<pre><code>&quot;config&quot;: {
+    &quot;process-timeout&quot;: 1800,
+    &quot;fxp-asset&quot;: {
+        &quot;enabled&quot;: false
+    }
+},
+&quot;repositories&quot;: [
+    {
+        &quot;type&quot;: &quot;composer&quot;,
+        &quot;url&quot;: &quot;https://mirrors.aliyun.com/composer/&quot;
+    },
+    {
+        &quot;type&quot;: &quot;composer&quot;,
+        &quot;url&quot;: &quot;https://asset-packagist.org&quot;
+    }
 ]
 </code></pre>
-<p>然后就可以用了</p>
-<pre><code>Yii::$app-&gt;stone
+<blockquote>
+<p>需要注意的是重新定义yii中的bower和npm路径</p>
+</blockquote>
+<pre><code>$config = [
+    ...
+    'aliases' =&gt; [
+        '@bower' =&gt; '@vendor/bower-asset',
+        '@npm'   =&gt; '@vendor/npm-asset',
+    ],
+    ...
+];
 </code></pre>
 
             </div>
@@ -110,9 +137,9 @@
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://mzq1210.github.io//post/solr-an-zhuang">
+                <a href="https://mzq1210.github.io//post/nginx-xue-xi">
                   <h3 class="post-title">
-                    solr安装
+                    Nginx学习
                   </h3>
                 </a>
               </div>
